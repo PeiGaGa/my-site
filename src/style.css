@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  /* 保留滚动条占位，避免不同页面高度引起的导航左右抖动 */
+  scrollbar-gutter: stable both-edges;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -62,7 +67,6 @@ button:focus-visible {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
