@@ -17,9 +17,9 @@
 </template>
 
 <style scoped>
-.m-container { padding: 0 16px; }
+.m-container { padding: 0; }
 .m-header, .m-footer { height: 48px; display:flex; align-items:center; }
-.m-main { min-height: calc(100vh - 96px); }
+.m-main { min-height: calc(100vh - 96px); padding: 0 16px; }
 .m-nav { display:flex; gap:12px; font-size:14px; }
 .m-nav a { color:#333; text-decoration:none; }
 .m-nav a.router-link-active { color:#1677ff; }

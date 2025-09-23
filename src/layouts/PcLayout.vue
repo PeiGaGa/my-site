@@ -20,10 +20,10 @@
 </template>
 
 <style scoped>
-.pc-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.pc-container { max-width: 1200px; margin: 0 auto; padding: 0; }
 .pc-header, .pc-footer { height: 64px; display:flex; align-items:center; }
 .pc-header { justify-content: center; }
-.pc-main { min-height: calc(100vh - 128px); }
+.pc-main { min-height: calc(100vh - 128px); padding: 0 60px; }
 .nav { display:flex; gap:16px; }
 .nav a { color:#333; text-decoration:none; }
 .nav a.router-link-active { color:#1677ff; }

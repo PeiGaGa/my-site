@@ -13,10 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
+/* html { */
   /* 保留滚动条占位，避免不同页面高度引起的导航左右抖动 */
-  scrollbar-gutter: stable both-edges;
-}
+  /* scrollbar-gutter: stable both-edges;
+} */
 
 a {
   font-weight: 500;

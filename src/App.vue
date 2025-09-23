@@ -10,3 +10,8 @@ const { isMobile } = useResponsive(1024)
   <component :is="isMobile ? MobileLayout : PcLayout" />
 </template>
 
+
+<style>
+html, body, #app { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+</style>
