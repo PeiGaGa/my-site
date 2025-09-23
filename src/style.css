@@ -29,10 +29,9 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden; /* 防止横向滚动条 */
 }
 
 h1 {
@@ -63,11 +62,8 @@ button:focus-visible {
   padding: 2em;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+/* 移除模板示例样式，避免影响布局容器宽度 */
+#app { width: 100%; margin: 0; padding: 0; }
 
 @media (prefers-color-scheme: light) {
   :root {
