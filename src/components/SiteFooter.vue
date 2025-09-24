@@ -135,7 +135,7 @@ function scrollToTop() {
 .m-links .col { 
   display: flex; 
   flex-direction: column; 
-  gap: 20px; 
+  gap: 18px; 
   min-width: 70px; 
   margin-right: 31px;
 }
@@ -252,11 +252,14 @@ function scrollToTop() {
   display: flex; 
   flex-direction: row;
   align-items: center;
-  gap: 12px;
   color: #9aa6b2; 
   font-size: 11px; 
-  margin-right: 12px; /* 移动端整体左移一点 */
 }
+
+.m-copy span{ 
+  margin-right: 30px;
+}
+
 
 .m-copy .links { 
   display: flex; 
@@ -291,16 +294,18 @@ function scrollToTop() {
   }
   
   .m-brand .logo { 
-    font-size: 40px; 
+    font-size: 32px; 
+    white-space: nowrap;
   }
   
   .m-brand .sub {
-    font-size: 16px;
+    font-size: 13px;
+    white-space: nowrap;
   }
   
   .m-links { 
     flex-wrap: nowrap; 
-    margin-left: 98px;
+    margin-left: 134px;
   }
   
   .m-links a { 
@@ -314,13 +319,13 @@ function scrollToTop() {
   }
   
   .m-social span {
-    font-size: 16px;
+    font-size: 18px;
     text-align: start;
   }
   
   .m-social .icons a {
-    width: 32px;
-    height: 18px;
+    width: 48px;
+    height: 48px;
     margin-right: 26px;
   }
   
@@ -353,12 +358,15 @@ function scrollToTop() {
   .m-copy {
     flex-direction: row;
     align-items: center;
-    gap: 20px;
     font-size: 12px;
+  }
+
+  .m-copy span{
+    margin-right: 110px;
   }
   
   .m-copy .links {
-    gap: 166px;
+    gap: 90px;
   }
   
   .m-copy .links a {
