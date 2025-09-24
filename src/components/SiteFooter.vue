@@ -203,7 +203,7 @@ function scrollToTop() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0;
+  margin: 50px 0;
   gap: 16px;
   flex-wrap: wrap; /* 防止超小屏溢出，仍保持与PC相同的一行结构为首选 */
 }
@@ -282,9 +282,6 @@ function scrollToTop() {
 
 /* Desktop Styles */
 @media (min-width: 1024px) {
-  .m-footer {
-    height: 50vh;
-  }
   
   .m-foot-wrap {
     padding: 0 100px;
@@ -342,7 +339,7 @@ function scrollToTop() {
   
   .search-copy-section {
     justify-content: space-between;
-    margin: 50px 0;
+    margin: 50px 0 0 0;
   }
   
   .m-search {
