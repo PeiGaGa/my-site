@@ -109,7 +109,7 @@ function scrollToTop() {
 .top-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 20px;
 }
 
@@ -117,7 +117,6 @@ function scrollToTop() {
   font-size: 20px; 
   color: #fff; 
   font-weight: 700; 
-  line-height: 1.2;
 }
 
 .m-brand .sub { 
@@ -135,9 +134,13 @@ function scrollToTop() {
 .m-links .col { 
   display: flex; 
   flex-direction: column; 
-  gap: 18px; 
+  gap: 12px; 
   min-width: 70px; 
   margin-right: 31px;
+}
+
+.m-links .col a{ 
+  font-size: 9px; 
 }
 
 .m-links a { 
@@ -280,11 +283,11 @@ function scrollToTop() {
 /* Desktop Styles */
 @media (min-width: 1024px) {
   .m-footer {
-    padding: 48px 0 32px;
+    height: 50vh;
   }
   
   .m-foot-wrap {
-    padding: 0 78px;
+    padding: 0 100px;
   }
   
   .top-section {
@@ -294,7 +297,7 @@ function scrollToTop() {
   }
   
   .m-brand .logo { 
-    font-size: 32px; 
+    font-size: 42px; 
     white-space: nowrap;
   }
   
@@ -304,8 +307,9 @@ function scrollToTop() {
   }
   
   .m-links { 
-    flex-wrap: nowrap; 
-    margin-left: 134px;
+    flex-wrap: nowrap;
+    margin-left: 126px;
+    margin-top: 14px;
   }
   
   .m-links a { 
@@ -315,11 +319,12 @@ function scrollToTop() {
   .m-social {
     box-sizing: content-box;
     text-align: right;
-    padding-left: 12px;
+    padding-left: 6px;
+    margin-top: 8px;
   }
   
   .m-social span {
-    font-size: 18px;
+    font-size: 21px;
     text-align: start;
   }
   
@@ -330,12 +335,14 @@ function scrollToTop() {
   }
   
   .m-divider {
-    margin: 20px 0;
+    margin: 58px 0 0 0;
+    height: 2px; 
+    background: #ccc; 
   }
   
   .search-copy-section {
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 50px 0;
   }
   
   .m-search {
@@ -362,15 +369,16 @@ function scrollToTop() {
   }
 
   .m-copy span{
-    margin-right: 110px;
+    margin-right: 140px;
+    font-size: 15px;
   }
   
   .m-copy .links {
-    gap: 90px;
+    gap: 110px;
   }
   
   .m-copy .links a {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 </style>
