@@ -10,7 +10,7 @@ import copy from '@/assets/images/copy.png'
       <h1 class="title">联系我们</h1>
       <div class="title-underline"></div>
     </div>
-    <div class="divider"></div>
+    <div class="divider dashed"></div>
 
     <!-- 公司1 卡片 -->
     <div class="contact-card">
@@ -60,7 +60,7 @@ import copy from '@/assets/images/copy.png'
 .title { font-size: 22px; margin: 0; }
 .title-underline { width:40px; height:3px; background:#f5a34b; margin:6px 0 12px; }
 .header-icon { width:24px; height:24px; object-fit:contain; opacity:.8; }
-.divider { height: 1px; background: #e5e6eb; margin: 12px 0 24px; }
+.divider { height: 0; border-top: 2px dashed #e5e6eb; margin: 12px 0 24px; }
 
 .contact-card { display:grid; grid-template-columns: 1fr; gap:0; border-radius: 4px; overflow:hidden; margin-bottom:24px; background:#fff; align-items:stretch; }
 .contact-card .info { background:#2f4a86; color:#fff; padding:20px; }
