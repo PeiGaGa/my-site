@@ -102,7 +102,13 @@ function scrollToTop() {
 .m-foot-wrap { 
   max-width: 1280px; 
   margin: 0 auto; 
-  padding: 0 78px;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .m-foot-wrap {
+    padding: 0 40px;
+  }
 }
 
 /* Top Section */
@@ -208,6 +214,30 @@ function scrollToTop() {
   flex-wrap: wrap; /* 防止超小屏溢出，仍保持与PC相同的一行结构为首选 */
 }
 
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  .search-copy-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  
+  .m-search {
+    max-width: 100%;
+  }
+  
+  .m-copy {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .m-copy span {
+    margin-right: 0;
+  }
+}
+
 .m-search { 
   position: relative; 
   max-width: 280px;
@@ -233,7 +263,8 @@ function scrollToTop() {
 .m-search span { 
   position: absolute; 
   right: 4px; 
-  top: 4px; 
+  top: 50%;
+  transform: translateY(-50%);
   height: 28px; 
   width: 28px; 
   border: 0; 
@@ -354,9 +385,9 @@ function scrollToTop() {
   .m-search span {
     height: 32px;
     width: 32px;
-    top: 4px;
+    top: 50%;
     right: 4px;
-    background: #2a3140;
+    transform: translateY(-50%);
   }
   
   .m-copy {
