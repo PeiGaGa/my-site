@@ -262,7 +262,8 @@ function scrollToTop() {
 
 .m-search span { 
   position: absolute; 
-  right: 4px; 
+  right: 0;
+  margin-right: 10px;
   top: 50%;
   transform: translateY(-50%);
   height: 28px; 
@@ -386,8 +387,9 @@ function scrollToTop() {
     height: 32px;
     width: 32px;
     top: 50%;
-    right: 4px;
+    right: 0;
     transform: translateY(-50%);
+    margin-right: 20px;
   }
   
   .m-copy {

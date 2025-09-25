@@ -10,6 +10,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  css: {
+    postcss: './postcss.config.cjs',
+  },
   server: {
     host: '0.0.0.0', // 允许外部访问
     port: 5173,      // 指定端口
