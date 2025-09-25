@@ -1,11 +1,8 @@
 <template>
-  <section class="hero" :style="{ backgroundImage: `url(${ex})` }">
-    <h1>连深海洋</h1>
-    <p>开创中国深远海三文鱼新纪元</p>
-    <div class="cta">
-      <router-link class="btn primary" to="/products">产品中心</router-link>
-      <router-link class="btn" to="/news">新闻动态</router-link>
-    </div>
+  <section class="hero" role="img" aria-label="home hero">
+    <img class="hero-img" :src="ex" alt="连深海洋" />
+    <div class="hero-mask"></div>
+    <h1 class="hero-title">连深海洋</h1>
   </section>
 
   <section class="section">
@@ -59,12 +56,22 @@ import ex from '@/assets/images/ex.png'
 </script>
 
 <style scoped>
-.hero { padding: 48px 20px; min-height: 70vh; background-position:center; background-size:cover; background-repeat:no-repeat; display:flex; flex-direction:column; justify-content:center; color:#fff; }
-h1 { font-size: clamp(28px, 6vw, 72px); line-height: 1.1; margin:0; text-shadow:0 2px 12px rgba(0,0,0,0.35); }
-p { font-size: clamp(14px, 2vw, 20px); color: #fff; text-shadow:0 2px 10px rgba(0,0,0,0.3); }
-.cta { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
-.btn { padding: 10px 16px; border: 1px solid #ddd; border-radius: 6px; }
-.primary { background: #1677ff; color: #fff; border-color: #1677ff; }
+.hero { position: relative; width:100vw; margin-left: calc(50% - 50vw); height: 56vh; min-height: 320px; max-height: 680px; overflow:hidden; }
+.hero-img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-mask { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.45) 100%); }
+.hero-title { position:absolute; left:50%; top:60%; transform: translate(-50%, -50%); margin:0; color:#fff; font-weight:800; letter-spacing:2px; font-size: 40px; text-align:center; white-space:nowrap; }
+
+@media (min-width: 768px) {
+  .hero-title { font-size: 80px; }
+}
+
+@media (min-width: 1200px) {
+  .hero-title { font-size: 112px; }
+}
+
+@media (min-width: 1025px) {
+  .hero { margin-top: calc(var(--pc-header-height) * -1); }
+}
 .section { padding: 40px 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
 .card { background:#f7f8fa; border:1px solid #eee; border-radius:8px; padding:16px; text-align:center; }
@@ -72,7 +79,6 @@ p { font-size: clamp(14px, 2vw, 20px); color: #fff; text-shadow:0 2px 10px rgba(
 .contact-grid { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .contact-card { border:1px solid #eee; border-radius:8px; padding:16px; }
 @media (min-width: 1024px) {
-  .hero { padding: 80px 60px; min-height: 88vh; }
 }
 </style>
 

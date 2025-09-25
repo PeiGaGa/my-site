@@ -12,6 +12,7 @@ const { isMobile } = useResponsive(1024)
 
 
 <style>
+:root { --pc-header-height: 64px; --m-header-height: 48px; }
 html, body, #app { margin: 0; padding: 0; }
 *, *::before, *::after { box-sizing: border-box; }
 </style>

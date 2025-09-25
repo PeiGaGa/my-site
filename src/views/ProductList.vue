@@ -4,6 +4,11 @@ import copy from '@/assets/images/copy.png'
 </script>
 
 <template>
+  <section class="page-hero" role="img" aria-label="product hero">
+    <img class="page-hero-img" :src="ex" alt="产品中心" />
+    <div class="page-hero-mask"></div>
+    <h1 class="page-hero-title">产品中心</h1>
+  </section>
   <section class="page">
     <div class="icon-row"><img class="header-icon" :src="copy" alt="copy" /></div>
     <div class="header-left">
@@ -85,6 +90,22 @@ import copy from '@/assets/images/copy.png'
 </template>
 
 <style scoped>
+.page-hero { position: relative; width:100vw; margin-left: calc(50% - 50vw); height: 56vh; min-height: 320px; max-height: 680px; overflow:hidden; }
+.page-hero-img { width:100%; height:100%; object-fit:cover; display:block; }
+.page-hero-mask { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.45) 100%); }
+.page-hero-title { position:absolute; left:50%; top:60%; transform: translate(-50%, -50%); margin:0; color:#fff; font-weight:800; letter-spacing:2px; font-size: 40px; text-align:center; white-space:nowrap; }
+
+@media (min-width: 768px) {
+  .page-hero-title { font-size: 80px; }
+}
+
+@media (min-width: 1200px) {
+  .page-hero-title { font-size: 112px; }
+}
+
+@media (min-width: 1025px) {
+  .page-hero { margin-top: calc(var(--pc-header-height) * -1); }
+}
 .page { padding: 40px 0; }
 .icon-row { display:flex; justify-content:flex-end; }
 .header-left { display:flex; flex-direction:column; }

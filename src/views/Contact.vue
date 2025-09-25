@@ -4,6 +4,13 @@ import copy from '@/assets/images/copy.png'
 </script>
 
 <template>
+  <!-- 顶部大图标题 -->
+  <section class="hero" role="img" aria-label="Contact hero">
+    <img class="hero-img" :src="ex" alt="海港风景图" />
+    <div class="hero-mask"></div>
+    <h1 class="hero-title">CONTACT US</h1>
+  </section>
+
   <section class="page">
     <div class="icon-row"><img class="header-icon" :src="copy" alt="copy" /></div>
     <div class="header-left">
@@ -54,6 +61,11 @@ import copy from '@/assets/images/copy.png'
 </template>
 
 <style scoped>
+.hero { position: relative; width:100vw; margin-left: calc(50% - 50vw); height: 52vh; min-height: 320px; max-height: 640px; overflow:hidden; }
+.hero-img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-mask { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.45) 100%); }
+.hero-title { position:absolute; left:50%; top:55%; transform: translate(-50%, -50%); margin:0; color:#fff; font-weight:800; letter-spacing:2px; font-size: 40px; text-align:center; white-space:nowrap; }
+
 .page { padding: 40px 0; }
 .icon-row { display:flex; justify-content:flex-end; }
 .header-left { display:flex; flex-direction:column; }
@@ -76,9 +88,20 @@ import copy from '@/assets/images/copy.png'
 .btn:hover { opacity:.92; }
 
 @media (min-width: 768px) {
+  .hero-title { font-size: 80px; top:60%; }
   .contact-card { grid-template-columns: 360px 1fr; }
   .contact-card .map { height:auto; }
   .actions { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1200px) {
+  .hero { height: 62vh; }
+  .hero-title { font-size: 112px; }
+}
+
+/* 让导航覆盖在大图之上（仅桌面，使用 header 变量高度） */
+@media (min-width: 1025px) {
+  .hero { margin-top: calc(var(--pc-header-height) * -1); }
 }
 </style>
 

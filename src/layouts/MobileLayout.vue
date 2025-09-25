@@ -18,7 +18,7 @@ import MobileNav from "@/components/MobileNav.vue";
 
 <style scoped>
 .m-container { padding: 0; }
-.m-header { height: 48px; display:flex; align-items:center; }
+.m-header { height: var(--m-header-height); display:flex; align-items:center; }
 .m-main { min-height: calc(100vh - 96px); padding: 0 16px; }
 /* nav styles moved to MobileNav.vue */
 

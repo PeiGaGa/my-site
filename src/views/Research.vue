@@ -29,6 +29,11 @@ const projects = ref([
 </script>
 
 <template>
+  <section class="hero" role="img" aria-label="research hero">
+    <img class="hero-img" :src="ex" alt="科研平台" />
+    <div class="hero-mask"></div>
+    <h1 class="hero-title">科研平台</h1>
+  </section>
   <section class="page">
     <div class="icon-row"><img class="header-icon" :src="copy" alt="copy" /></div>
     <div class="header-left">
@@ -59,6 +64,22 @@ const projects = ref([
 </template>
 
 <style scoped>
+.hero { position: relative; width:100vw; margin-left: calc(50% - 50vw); height: 56vh; min-height: 320px; max-height: 680px; overflow:hidden; }
+.hero-img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-mask { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.45) 100%); }
+.hero-title { position:absolute; left:50%; top:60%; transform: translate(-50%, -50%); margin:0; color:#fff; font-weight:800; letter-spacing:2px; font-size: 40px; text-align:center; white-space:nowrap; }
+
+@media (min-width: 768px) {
+  .hero-title { font-size: 80px; }
+}
+
+@media (min-width: 1200px) {
+  .hero-title { font-size: 112px; }
+}
+
+@media (min-width: 1025px) {
+  .hero { margin-top: calc(var(--pc-header-height) * -1); }
+}
 .page { padding: 40px 0; }
 .icon-row { display:flex; justify-content:flex-end; }
 .header-left { display:flex; flex-direction:column; }
