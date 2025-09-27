@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
 .pc-container { width: 100%; margin: 0 auto; padding: 0; }
 .pc-header { height: var(--pc-header-height); display:flex; align-items:center; justify-content:center; position:fixed; top:0; left:0; right:0; z-index:10; transition: transform 200ms ease; will-change: transform; }
 .pc-header.is-hidden { transform: translateY(-100%); }
-.pc-main { min-height: calc(100vh - 320px); padding: 0 60px; padding-top: var(--pc-header-height); transition: padding-top 200ms ease; }
+.pc-main { min-height: calc(100vh - 20rem); padding: 0 3.75rem; padding-top: var(--pc-header-height); transition: padding-top 200ms ease; } /* 320px = 20rem, 60px = 3.75rem */
 .pc-main.compact { padding-top: 0; }
 /* nav styles moved to PcNav.vue */
 

@@ -56,28 +56,28 @@ import ex from '@/assets/images/ex.png'
 </script>
 
 <style scoped>
-.hero { position: relative; width:100vw; margin-left: calc(50% - 50vw); height: 56vh; min-height: 320px; max-height: 680px; overflow:hidden; }
+.hero { position: relative; width:100vw; margin-left: calc(50% - 50vw); height: 56vh; min-height: 20rem; max-height: 42.5rem; overflow:hidden; } /* 320px, 680px */
 .hero-img { width:100%; height:100%; object-fit:cover; display:block; }
 .hero-mask { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.45) 100%); }
-.hero-title { position:absolute; left:50%; top:60%; transform: translate(-50%, -50%); margin:0; color:#fff; font-weight:800; letter-spacing:2px; font-size: 40px; text-align:center; white-space:nowrap; }
+.hero-title { position:absolute; left:50%; top:60%; transform: translate(-50%, -50%); margin:0; color:#fff; font-weight:800; letter-spacing:0.125rem; font-size: 2.5rem; text-align:center; white-space:nowrap; } /* 2px, 40px */
 
 @media (min-width: 768px) {
-  .hero-title { font-size: 80px; }
+  .hero-title { font-size: 5rem; } /* 80px */
 }
 
 @media (min-width: 1200px) {
-  .hero-title { font-size: 112px; }
+  .hero-title { font-size: 7rem; } /* 112px */
 }
 
 @media (min-width: 1025px) {
   .hero { margin-top: calc(var(--pc-header-height) * -1); }
 }
-.section { padding: 40px 0; }
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-.card { background:#f7f8fa; border:1px solid #eee; border-radius:8px; padding:16px; text-align:center; }
-.news { display:grid; gap:8px; }
-.contact-grid { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.contact-card { border:1px solid #eee; border-radius:8px; padding:16px; }
+.section { padding: 2.5rem 0; } /* 40px */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 0.75rem; } /* 160px, 12px */
+.card { background:#f7f8fa; border:1px solid #eee; border-radius:0.5rem; padding:1rem; text-align:center; } /* 8px, 16px */
+.news { display:grid; gap:0.5rem; } /* 8px */
+.contact-grid { display:grid; gap:0.75rem; grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr)); } /* 12px, 220px */
+.contact-card { border:1px solid #eee; border-radius:0.5rem; padding:1rem; } /* 8px, 16px */
 @media (min-width: 1024px) {
 }
 </style>

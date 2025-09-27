@@ -1,0 +1,264 @@
+/* 移动端和PC端rem适配 */
+
+/* 移动端特殊适配 */
+@media (max-width: 480px) {
+  /* 超小屏幕优化 */
+  :root {
+    --mobile-padding: 0.5rem; /* 8px */
+    --mobile-margin: 0.25rem; /* 4px */
+    --mobile-font-scale: 0.875; /* 移动端字体缩放系数 */
+  }
+  
+  /* 移动端按钮优化 */
+  .btn-mobile {
+    min-height: 2.5rem; /* 40px */
+    padding: 0.75rem 1rem; /* 12px 16px */
+    font-size: 0.875rem; /* 14px */
+    border-radius: 0.375rem; /* 6px */
+  }
+  
+  /* 移动端卡片优化 */
+  .card-mobile {
+    padding: 0.75rem; /* 12px */
+    margin-bottom: 0.75rem; /* 12px */
+    border-radius: 0.5rem; /* 8px */
+  }
+  
+  /* 移动端导航优化 */
+  .nav-mobile {
+    height: 3rem; /* 48px */
+    padding: 0 0.75rem; /* 12px */
+  }
+  
+  /* 移动端表单优化 */
+  .form-mobile input,
+  .form-mobile textarea {
+    min-height: 2.5rem; /* 40px */
+    padding: 0.75rem; /* 12px */
+    font-size: 0.875rem; /* 14px */
+    border-radius: 0.375rem; /* 6px */
+  }
+}
+
+/* 中等移动端适配 */
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --mobile-padding: 0.75rem; /* 12px */
+    --mobile-margin: 0.5rem; /* 8px */
+    --mobile-font-scale: 0.9375; /* 中等移动端字体缩放系数 */
+  }
+  
+  .btn-mobile {
+    min-height: 2.75rem; /* 44px */
+    padding: 0.875rem 1.25rem; /* 14px 20px */
+    font-size: 0.9375rem; /* 15px */
+  }
+  
+  .card-mobile {
+    padding: 1rem; /* 16px */
+    margin-bottom: 1rem; /* 16px */
+  }
+  
+  .nav-mobile {
+    height: 3.25rem; /* 52px */
+    padding: 0 1rem; /* 16px */
+  }
+}
+
+/* 平板端适配 */
+@media (min-width: 769px) and (max-width: 1023px) {
+  :root {
+    --tablet-padding: 1rem; /* 16px */
+    --tablet-margin: 0.75rem; /* 12px */
+    --tablet-font-scale: 1; /* 平板端字体缩放系数 */
+  }
+  
+  .btn-tablet {
+    min-height: 2.5rem; /* 40px */
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    font-size: 1rem; /* 16px */
+    border-radius: 0.5rem; /* 8px */
+  }
+  
+  .card-tablet {
+    padding: 1.25rem; /* 20px */
+    margin-bottom: 1.25rem; /* 20px */
+    border-radius: 0.75rem; /* 12px */
+  }
+  
+  .nav-tablet {
+    height: 3.5rem; /* 56px */
+    padding: 0 1.25rem; /* 20px */
+  }
+}
+
+/* PC端适配 */
+@media (min-width: 1024px) {
+  :root {
+    --desktop-padding: 1.5rem; /* 24px */
+    --desktop-margin: 1rem; /* 16px */
+    --desktop-font-scale: 1; /* PC端字体缩放系数 */
+  }
+  
+  .btn-desktop {
+    min-height: 2.75rem; /* 44px */
+    padding: 0.875rem 2rem; /* 14px 32px */
+    font-size: 1rem; /* 16px */
+    border-radius: 0.5rem; /* 8px */
+  }
+  
+  .card-desktop {
+    padding: 1.5rem; /* 24px */
+    margin-bottom: 1.5rem; /* 24px */
+    border-radius: 0.75rem; /* 12px */
+  }
+  
+  .nav-desktop {
+    height: 4.375rem; /* 70px */
+    padding: 0 1.5rem; /* 24px */
+  }
+  
+  /* PC端网格布局优化 */
+  .grid-desktop {
+    display: grid;
+    gap: 1.5rem; /* 24px */
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* 320px */
+  }
+  
+  /* PC端侧边栏优化 */
+  .sidebar-desktop {
+    width: 18.75rem; /* 300px */
+    padding: 1.5rem; /* 24px */
+  }
+  
+  /* PC端内容区域优化 */
+  .content-desktop {
+    padding: 2rem; /* 32px */
+    max-width: 75rem; /* 1200px */
+  }
+}
+
+/* 大屏幕PC端适配 */
+@media (min-width: 1200px) {
+  :root {
+    --large-padding: 2rem; /* 32px */
+    --large-margin: 1.25rem; /* 20px */
+    --large-font-scale: 1.125; /* 大屏幕字体缩放系数 */
+  }
+  
+  .btn-large {
+    min-height: 3rem; /* 48px */
+    padding: 1rem 2.5rem; /* 16px 40px */
+    font-size: 1.125rem; /* 18px */
+    border-radius: 0.625rem; /* 10px */
+  }
+  
+  .card-large {
+    padding: 2rem; /* 32px */
+    margin-bottom: 2rem; /* 32px */
+    border-radius: 1rem; /* 16px */
+  }
+  
+  .nav-large {
+    height: 5rem; /* 80px */
+    padding: 0 2rem; /* 32px */
+  }
+  
+  .grid-large {
+    gap: 2rem; /* 32px */
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); /* 400px */
+  }
+  
+  .sidebar-large {
+    width: 25rem; /* 400px */
+    padding: 2rem; /* 32px */
+  }
+  
+  .content-large {
+    padding: 2.5rem; /* 40px */
+    max-width: 87.5rem; /* 1400px */
+  }
+}
+
+/* 超大屏幕适配 */
+@media (min-width: 1440px) {
+  :root {
+    --xlarge-padding: 2.5rem; /* 40px */
+    --xlarge-margin: 1.5rem; /* 24px */
+    --xlarge-font-scale: 1.25; /* 超大屏幕字体缩放系数 */
+  }
+  
+  .btn-xlarge {
+    min-height: 3.25rem; /* 52px */
+    padding: 1.125rem 3rem; /* 18px 48px */
+    font-size: 1.25rem; /* 20px */
+    border-radius: 0.75rem; /* 12px */
+  }
+  
+  .card-xlarge {
+    padding: 2.5rem; /* 40px */
+    margin-bottom: 2.5rem; /* 40px */
+    border-radius: 1.25rem; /* 20px */
+  }
+  
+  .nav-xlarge {
+    height: 5.5rem; /* 88px */
+    padding: 0 2.5rem; /* 40px */
+  }
+  
+  .grid-xlarge {
+    gap: 2.5rem; /* 40px */
+    grid-template-columns: repeat(auto-fit, minmax(31.25rem, 1fr)); /* 500px */
+  }
+  
+  .sidebar-xlarge {
+    width: 31.25rem; /* 500px */
+    padding: 2.5rem; /* 40px */
+  }
+  
+  .content-xlarge {
+    padding: 3rem; /* 48px */
+    max-width: 100rem; /* 1600px */
+  }
+}
+
+/* 通用响应式工具类 */
+.responsive-text {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem); /* 14px - 18px */
+}
+
+.responsive-padding {
+  padding: clamp(0.75rem, 2vw, 1.5rem); /* 12px - 24px */
+}
+
+.responsive-margin {
+  margin: clamp(0.5rem, 1.5vw, 1rem); /* 8px - 16px */
+}
+
+.responsive-gap {
+  gap: clamp(0.75rem, 2vw, 1.5rem); /* 12px - 24px */
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .touch-target {
+    min-height: 2.75rem; /* 44px - 触摸目标最小尺寸 */
+    min-width: 2.75rem; /* 44px */
+  }
+  
+  .touch-spacing {
+    margin: 0.5rem; /* 8px - 触摸元素间距 */
+  }
+}
+
+/* 鼠标设备优化 */
+@media (hover: hover) and (pointer: fine) {
+  .hover-effect {
+    transition: all 0.2s ease;
+  }
+  
+  .hover-effect:hover {
+    transform: translateY(-0.125rem); /* -2px */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px */
+  }
+}
