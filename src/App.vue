@@ -13,8 +13,8 @@ const { isMobile } = useResponsive(1024)
 
 <style>
 :root { 
-  --pc-header-height: 4.375rem; /* 70px */
-  --m-header-height: 3rem; /* 48px */
+  --pc-header-height: 7rem; /* 112px */
+  --m-header-height: 4.5rem; /* 72px */
   font-size: 16px; /* 设置根字体大小为 16px，1rem = 16px */
 }
 

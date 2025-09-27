@@ -31,7 +31,7 @@
   align-items: center; 
   justify-content: space-between; 
   width: 100%; 
-  padding: 0 1.25rem; /* 20px */ 
+  padding: 0 2rem; /* 32px */ 
   height: var(--pc-header-height); 
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -39,6 +39,7 @@
 
 .pc-nav__left { 
   flex: 0 0 auto; 
+  margin-left: 1.5rem;
 }
 
 .logo { 
@@ -51,14 +52,14 @@
 
 .logo-main { 
   font-weight: 700; 
-  font-size: 1.25rem; /* 20px */
+  font-size: 2rem; /* 32px */
   letter-spacing: 0.125rem; /* 2px */ 
   line-height: 1;
 }
 
 .logo-sub { 
-  font-size: 0.75rem; /* 12px */
-  font-weight: 400; 
+  font-size: 0.9rem; /* 12.8px */
+  font-weight: 500; 
   letter-spacing: 0.0625rem; /* 1px */
   opacity: 0.9;
   margin-top: 0.125rem; /* 2px */
@@ -67,23 +68,23 @@
 .pc-nav__right { 
   flex: 0 0 auto; 
   display: flex; 
-  align-items: center; 
-  gap: 2.5rem; /* 40px */ 
+  align-items: center;
 }
 
 .pc-nav__menu { 
-  display: flex; 
-  gap: 1.75rem; /* 28px */ 
   list-style: none; 
   margin: 0; 
-  padding: 0; 
+  padding: 0;
+  display: flex;
+  width: 46rem;
+  justify-content: space-between;
 }
 
 .pc-nav__menu a { 
   color: #fff; 
   text-decoration: none; 
-  font-size: 0.75rem; /* 12px */ 
-  font-weight: 400;
+  font-size: 1rem; /* 14px */ 
+  font-weight: 500;
   transition: opacity 0.2s ease;
 }
 
@@ -101,14 +102,14 @@
   position: absolute; 
   left: 0; 
   right: 0; 
-  bottom: -0.5rem; /* -8px */
+  bottom: -0.625rem; /* -10px */
   height: 0.125rem; /* 2px */ 
   background: #fff; 
   opacity: 0.9; 
 }
 
 .hamburger { 
-  width: 2rem; /* 32px */
+  width: 2.5rem; /* 40px */
   height: 2rem; /* 32px */ 
   display: grid; 
   place-items: center; 
@@ -116,14 +117,16 @@
   border: none; 
   padding: 0; 
   cursor: pointer;
+  margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .hamburger span { 
   display: block; 
-  width: 1.25rem; /* 20px */
+  width: 1.5rem; /* 24px */
   height: 0.125rem; /* 2px */
   background: #fff; 
-  margin: 0.1875rem 0; /* 3px */ 
+  margin: 0.25rem 0; /* 4px */ 
   transition: all 0.3s ease;
 }
 </style>
