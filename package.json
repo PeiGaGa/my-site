@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,6 +18,8 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "postcss-pxtorem": "^6.1.0",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vite-plugin-pages": "^0.33.1",
+    "vite-ssg": "^28.1.0"
   }
 }

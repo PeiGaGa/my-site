@@ -1,24 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import generatedRoutes from 'virtual:generated-pages'
 
-const Home = () => import('../views/Home.vue')
-const About = () => import('../views/About.vue')
-const Farming = () => import('../views/Farming.vue')
-const Research = () => import('../views/Research.vue')
-const ProductList = () => import('../views/ProductList.vue')
-const NewsList = () => import('../views/NewsList.vue')
-const NewsDetail = () => import('../views/NewsDetail.vue')
-const Contact = () => import('../views/Contact.vue')
-
-const routes = [
-  { path: '/', name: 'home', component: Home, meta: { title: '首页 - 连深海洋', description: '连深海洋官方网站首页', keywords: '连深海洋,三文鱼,深远海' } },
-  { path: '/about', name: 'about', component: About, meta: { title: '关于我们 - 连深海洋' } },
-  { path: '/farming', name: 'farming', component: Farming, meta: { title: '养殖模式 - 连深海洋' } },
-  { path: '/research', name: 'research', component: Research, meta: { title: '科研平台 - 连深海洋' } },
-  { path: '/products', name: 'products', component: ProductList, meta: { title: '产品中心 - 连深海洋' } },
-  { path: '/news', name: 'news', component: NewsList, meta: { title: '新闻动态 - 连深海洋' } },
-  { path: '/news/:id', name: 'news-detail', component: NewsDetail, meta: { title: '新闻详情 - 连深海洋' } },
-  { path: '/contact', name: 'contact', component: Contact, meta: { title: '联系我们 - 连深海洋' } },
-]
+// 由 vite-plugin-pages 自动生成，默认从 src/pages 读取
+const routes = generatedRoutes
 
 const router = createRouter({
   history: createWebHistory(),
