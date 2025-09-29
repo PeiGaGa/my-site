@@ -1,5 +1,6 @@
 <route>
 {
+  "name": "news-detail",
   "meta": { "title": "新闻详情 - 连深海洋" }
 }
 </route>
