@@ -59,7 +59,7 @@ onMounted(async () => {
       '江苏省连云港市赣榆区白中路泉岗路303号1202室',
       '连云港市',
       // fallback lnglat for Ganyu District Government (approximate), replace if you have precise coords
-      [119.118, 34.839]
+      [119.176746, 34.839665]
     )
 
     // 公司2
@@ -69,7 +69,7 @@ onMounted(async () => {
       '深圳市盐田区盐田街道田东社区深盐路2002号 大百汇新城东六巷A栋602',
       '深圳市',
       // fallback lnglat near Dayawan/Shatoujiao area (approximate), replace if you have precise coords
-      [114.237, 22.557]
+      [114.24842, 22.567931]
     )
   } catch (e) {
     console.error(e)
