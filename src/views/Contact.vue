@@ -1,6 +1,87 @@
 <script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
 import ex from '@/assets/images/ex.png'
 import copy from '@/assets/images/copy.png'
+import AMapLoader from '@amap/amap-jsapi-loader'
+
+const mapElCompany1 = ref(null)
+const mapElCompany2 = ref(null)
+
+let mapInstanceCompany1 = null
+let mapInstanceCompany2 = null
+
+function initMap(AMap, container, address, city, fallbackLngLat) {
+  if (!container) return
+  const map = new AMap.Map(container, {
+    zoom: 14,
+    viewMode: '2D',
+    center: fallbackLngLat || undefined,
+  })
+
+  // 地理编码定位；失败则使用兜底坐标
+  AMap.plugin('AMap.Geocoder', function () {
+    const geocoder = new AMap.Geocoder({ city: city || '全国' })
+    geocoder.getLocation(address, function (status, result) {
+      if (status === 'complete' && result.geocodes && result.geocodes.length) {
+        const location = result.geocodes[0].location
+        map.setCenter(location)
+        map.setZoom(16)
+        new AMap.Marker({ position: location, map })
+      } else {
+        console.warn('[AMap] Geocode failed for address:', address, result)
+        if (fallbackLngLat) {
+          map.setCenter(fallbackLngLat)
+          map.setZoom(15)
+          new AMap.Marker({ position: fallbackLngLat, map })
+        }
+      }
+    })
+  })
+
+  return map
+}
+
+onMounted(async () => {
+  try {
+    if (typeof window === 'undefined') return
+    // 可选：若开启安全校验，请填写安全密钥
+    window._AMapSecurityConfig = { securityJsCode: '' }
+    const AMap = await AMapLoader.load({
+      key: '',
+      version: '2.0',
+      plugins: ['AMap.Geocoder', 'AMap.Scale'],
+    })
+
+    // 公司1
+    mapInstanceCompany1 = initMap(
+      AMap,
+      mapElCompany1.value,
+      '江苏省连云港市赣榆区白中路泉岗路303号1202室',
+      '连云港市',
+      // fallback lnglat for Ganyu District Government (approximate), replace if you have precise coords
+      [119.118, 34.839]
+    )
+
+    // 公司2
+    mapInstanceCompany2 = initMap(
+      AMap,
+      mapElCompany2.value,
+      '深圳市盐田区盐田街道田东社区深盐路2002号 大百汇新城东六巷A栋602',
+      '深圳市',
+      // fallback lnglat near Dayawan/Shatoujiao area (approximate), replace if you have precise coords
+      [114.237, 22.557]
+    )
+  } catch (e) {
+    console.error(e)
+  }
+})
+
+onUnmounted(() => {
+  try { mapInstanceCompany1 && mapInstanceCompany1.destroy && mapInstanceCompany1.destroy() } catch {}
+  try { mapInstanceCompany2 && mapInstanceCompany2.destroy && mapInstanceCompany2.destroy() } catch {}
+  mapInstanceCompany1 = null
+  mapInstanceCompany2 = null
+})
 </script>
 
 <template>
@@ -30,9 +111,7 @@ import copy from '@/assets/images/copy.png'
         <p class="sub">高校/科研机构合作</p>
         <p>联系人/罗严：18208985972</p>
       </div>
-      <div class="map">
-        <img :src="ex" alt="地图占位" />
-      </div>
+      <div class="map" ref="mapElCompany1"></div>
     </div>
 
     <!-- 公司2 卡片 -->
@@ -47,9 +126,7 @@ import copy from '@/assets/images/copy.png'
         <p class="sub">高校/科研机构合作</p>
         <p>联系人/罗严：18208985972</p>
       </div>
-      <div class="map">
-        <img :src="ex" alt="地图占位" />
-      </div>
+      <div class="map" ref="mapElCompany2"></div>
     </div>
 
     <!-- 底部按钮 -->
@@ -81,7 +158,6 @@ import copy from '@/assets/images/copy.png'
 .contact-card .info p { margin:6px 0; line-height:1.6; }
 .contact-card .info p.sub { margin-top:12px; font-weight:600; }
 .contact-card .map { position:relative; height:200px; }
-.contact-card .map img { display:block; width:100%; height:100%; object-fit:cover; }
 
 .actions { display:grid; grid-template-columns: 1fr; gap:16px; margin-top: 12px; }
 .btn { background:#2f4a86; color:#fff; border:none; padding:14px 16px; border-radius:4px; font-size:16px; cursor:pointer; }
@@ -90,7 +166,7 @@ import copy from '@/assets/images/copy.png'
 @media (min-width: 768px) {
   .hero-title { font-size: 80px; top:60%; }
   .contact-card { grid-template-columns: 360px 1fr; }
-  .contact-card .map { height:auto; }
+    .contact-card .map { height:auto; min-height: 280px; }
   .actions { grid-template-columns: 1fr 1fr; }
 }
 
