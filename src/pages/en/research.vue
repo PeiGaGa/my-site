@@ -1,7 +1,7 @@
 <route>
 {
-  "path": "/research",
-  "meta": { "title": "科研平台 - 连深海洋" }
+  "path": "/en/research",
+  "meta": { "title": "Research Platform - Lianshen Marine", "language": "en" }
 }
 </route>
 

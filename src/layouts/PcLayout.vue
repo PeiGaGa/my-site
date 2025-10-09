@@ -16,10 +16,14 @@
 import SiteFooter from "@/components/SiteFooter.vue";
 import PcNav from "@/components/PcNav.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
+import { useLanguage } from "@/composables/useLanguage";
 
 const isHeaderHidden = ref(false);
 const lastScrollY = ref(0);
 let ticking = false;
+
+// 初始化语言管理
+const { initializeLanguage } = useLanguage();
 
 function onScroll() {
   const currentY = window.scrollY || 0;
@@ -43,6 +47,8 @@ function onScroll() {
 onMounted(() => {
   lastScrollY.value = window.scrollY || 0;
   window.addEventListener("scroll", onScroll, { passive: true });
+  // 初始化语言设置
+  initializeLanguage();
 });
 
 onBeforeUnmount(() => {

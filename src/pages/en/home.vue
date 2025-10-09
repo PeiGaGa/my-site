@@ -1,7 +1,7 @@
 <route>
 {
-  "path": "/",
-  "meta": { "title": "首页 - 连深海洋" }
+  "path": "/en",
+  "meta": { "title": "Home - Lianshen Marine", "language": "en" }
 }
 </route>
 

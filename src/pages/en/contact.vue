@@ -1,7 +1,7 @@
 <route>
 {
-  "path": "/contact",
-  "meta": { "title": "联系我们 - 连深海洋" }
+  "path": "/en/contact",
+  "meta": { "title": "Contact & Cooperation - Lianshen Marine", "language": "en" }
 }
 </route>
 

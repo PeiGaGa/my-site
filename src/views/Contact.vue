@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import ex from '@/assets/images/ex.png'
 import copy from '@/assets/images/copy.png'
-import AMapLoader from '@amap/amap-jsapi-loader'
 
 const mapElCompany1 = ref(null)
 const mapElCompany2 = ref(null)
@@ -44,6 +43,10 @@ function initMap(AMap, container, address, city, fallbackLngLat) {
 onMounted(async () => {
   try {
     if (typeof window === 'undefined') return
+    
+    // 动态导入 AMapLoader 以避免 SSR 问题
+    const { default: AMapLoader } = await import('@amap/amap-jsapi-loader')
+    
     // 可选：若开启安全校验，请填写安全密钥
     window._AMapSecurityConfig = { securityJsCode: '' }
     const AMap = await AMapLoader.load({

@@ -1,12 +1,29 @@
 <template>
   <nav class="m-nav">
     <div class="m-nav__left">
-      <router-link to="/" class="logo">
+      <router-link :to="getLocalizedPath('/')" class="logo">
         <div class="logo-main">连深海洋</div>
         <div class="logo-sub">LIANSHEN MARINE</div>
       </router-link>
     </div>
     <div class="m-nav__right">
+      <div class="language-switch">
+        <button 
+          class="lang-btn" 
+          :class="{ active: currentLanguage === 'zh-cn' }"
+          @click="switchLanguage('zh-cn')"
+        >
+          CN
+        </button>
+        <span class="lang-divider">|</span>
+        <button 
+          class="lang-btn" 
+          :class="{ active: currentLanguage === 'en' }"
+          @click="switchLanguage('en')"
+        >
+          EN
+        </button>
+      </div>
       <button class="hamburger" aria-label="打开菜单">
         <span></span>
         <span></span>
@@ -15,6 +32,27 @@
     </div>
   </nav>
 </template>
+
+<script>
+import { useLanguage } from '@/composables/useLanguage'
+
+export default {
+  name: 'MobileNav',
+  setup() {
+    const { currentLanguage, switchLanguage, addLanguageToPath } = useLanguage()
+    
+    const getLocalizedPath = (path) => {
+      return addLanguageToPath(path, currentLanguage.value)
+    }
+    
+    return {
+      currentLanguage,
+      switchLanguage,
+      getLocalizedPath
+    }
+  }
+}
+</script>
 
 <style scoped>
 .m-nav { 
@@ -87,6 +125,45 @@
   transition: all 0.3s ease;
 }
 
+.language-switch {
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.lang-btn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.lang-divider {
+  color: #fff;
+  opacity: 0.5;
+  margin: 0 0.125rem;
+  font-size: 0.75rem;
+}
+
 /* 小屏幕优化 */
 @media (max-width: 375px) {
   .m-nav {
@@ -99,6 +176,21 @@
   
   .logo-sub {
     font-size: 0.5rem; /* 8px */
+  }
+  
+  .language-switch {
+    margin-right: 0.5rem;
+  }
+  
+  .lang-btn {
+    font-size: 0.625rem; /* 10px */
+    padding: 0.0625rem 0.125rem;
+    min-width: 1.25rem;
+  }
+  
+  .lang-divider {
+    font-size: 0.625rem;
+    margin: 0 0.0625rem;
   }
 }
 

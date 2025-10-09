@@ -1,6 +1,7 @@
 <route>
 {
-  "meta": { "title": "新闻动态 - 连深海洋" }
+  "path": "/en/news",
+  "meta": { "title": "News - Lianshen Marine", "language": "en" }
 }
 </route>
 

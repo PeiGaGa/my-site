@@ -1,7 +1,7 @@
 <route>
 {
-  "path": "/farming",
-  "meta": { "title": "养殖模式 - 连深海洋" }
+  "path": "/en/farming",
+  "meta": { "title": "Aquaculture Models - Lianshen Marine", "language": "en" }
 }
 </route>
 

@@ -1,7 +1,8 @@
 <route>
 {
   "name": "news-detail",
-  "meta": { "title": "新闻详情 - 连深海洋" }
+  "path": "/en/news/:id",
+  "meta": { "title": "News Detail - Lianshen Marine", "language": "en" }
 }
 </route>
 

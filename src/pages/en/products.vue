@@ -1,7 +1,7 @@
 <route>
 {
-  "path": "/products",
-  "meta": { "title": "产品中心 - 连深海洋" }
+  "path": "/en/products",
+  "meta": { "title": "Products - Lianshen Marine", "language": "en" }
 }
 </route>
 

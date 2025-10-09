@@ -1,21 +1,38 @@
 <template>
   <nav class="pc-nav">
     <div class="pc-nav__left">
-      <router-link to="/" class="logo">
+      <router-link :to="getLocalizedPath('/')" class="logo">
         <div class="logo-main">连深海洋</div>
         <div class="logo-sub">LIANSHEN MARINE</div>
       </router-link>
     </div>
     <div class="pc-nav__right">
       <ul class="pc-nav__menu">
-        <li><router-link to="/">首页</router-link></li>
-        <li><router-link to="/about">关于我们</router-link></li>
-        <li><router-link to="/farming">养殖模式</router-link></li>
-        <li><router-link to="/research">科研平台</router-link></li>
-        <li><router-link to="/products">产品中心</router-link></li>
-        <li><router-link to="/news">新闻动态</router-link></li>
-        <li><router-link to="/contact">联系合作</router-link></li>
+        <li><router-link :to="getLocalizedPath('/')">首页</router-link></li>
+        <li><router-link :to="getLocalizedPath('/about')">关于我们</router-link></li>
+        <li><router-link :to="getLocalizedPath('/farming')">养殖模式</router-link></li>
+        <li><router-link :to="getLocalizedPath('/research')">科研平台</router-link></li>
+        <li><router-link :to="getLocalizedPath('/products')">产品中心</router-link></li>
+        <li><router-link :to="getLocalizedPath('/news')">新闻动态</router-link></li>
+        <li><router-link :to="getLocalizedPath('/contact')">联系合作</router-link></li>
       </ul>
+      <div class="language-switch">
+        <button 
+          class="lang-btn" 
+          :class="{ active: currentLanguage === 'zh-cn' }"
+          @click="switchLanguage('zh-cn')"
+        >
+          CN
+        </button>
+        <span class="lang-divider">|</span>
+        <button 
+          class="lang-btn" 
+          :class="{ active: currentLanguage === 'en' }"
+          @click="switchLanguage('en')"
+        >
+          EN
+        </button>
+      </div>
       <button class="hamburger" aria-label="打开菜单">
         <span></span>
         <span></span>
@@ -24,6 +41,27 @@
     </div>
   </nav>
 </template>
+
+<script>
+import { useLanguage } from '@/composables/useLanguage'
+
+export default {
+  name: 'PcNav',
+  setup() {
+    const { currentLanguage, switchLanguage, addLanguageToPath } = useLanguage()
+    
+    const getLocalizedPath = (path) => {
+      return addLanguageToPath(path, currentLanguage.value)
+    }
+    
+    return {
+      currentLanguage,
+      switchLanguage,
+      getLocalizedPath
+    }
+  }
+}
+</script>
 
 <style scoped>
 .pc-nav { 
@@ -128,6 +166,44 @@
   background: #fff; 
   margin: 0.25rem 0; /* 4px */ 
   transition: all 0.3s ease;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  margin-left: 1rem;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.lang-btn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.lang-divider {
+  color: #fff;
+  opacity: 0.5;
+  margin: 0 0.25rem;
+  font-size: 0.875rem;
 }
 </style>
 
