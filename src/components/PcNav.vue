@@ -33,11 +33,11 @@
           EN
         </button>
       </div>
-      <button class="hamburger" aria-label="打开菜单">
+      <!-- <button class="hamburger" aria-label="打开菜单">
         <span></span>
         <span></span>
         <span></span>
-      </button>
+      </button> -->
     </div>
   </nav>
 </template>

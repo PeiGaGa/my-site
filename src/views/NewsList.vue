@@ -1,36 +1,52 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 import { useRouter } from 'vue-router'
 import copy from '@/assets/images/copy.png'
 import ex from '@/assets/images/ex.png'
 
 const router = useRouter()
 
-const allNews = ref([])
-const loading = ref(true)
+const enterpriseNews = ref([
+  { id: 1, title: '苏海1号LNG首航成功，开启中国深远海三文鱼养殖新纪元。', date: '2023-05-15', excerpt: '全球首座船载鱼类育苗工厂“苏海1号”顺利完成首航，标志着我国深远海三文鱼规模化养殖迈向里程碑。', cover: ex },
+  { id: 2, title: '连深海洋与中科院联合研发三文鱼病害快速检测技术。', date: '2023-04-28', excerpt: '产学研协同创新，助力水产健康养殖。', cover: copy },
+  { id: 3, title: '连深海洋与多家知名企业达成战略合作，共建三文鱼全产业链。', date: '2023-05-15', excerpt: '强强联合，推动产业高质量发展。', cover: copy },
+  { id: 4, title: '智慧渔场平台上线，养殖全过程实现数字化可视。', date: '2023-06-02', excerpt: '物联网与AI算法融合，提升生产管理效率。', cover: copy },
+  { id: 5, title: '“蓝海计划”二期启动，深海网箱扩容至百万方。', date: '2023-06-18', excerpt: '扩容提质并重，打造绿色低碳示范渔场。', cover: ex },
+  { id: 6, title: '冷链加工中心投产，打通从海上到餐桌最后一公里。', date: '2023-07-01', excerpt: '全程温控、原码追溯，保障产品新鲜安全。', cover: copy },
+  { id: 7, title: '与海洋大学共建联合实验室，聚焦育种与营养研究。', date: '2023-07-12', excerpt: '校企合作，夯实技术底座。', cover: ex },
+  { id: 8, title: '完成B轮融资，加速推进深远海智能养殖装备迭代。', date: '2023-08-03', excerpt: '资本助力产业升级，持续加大研发投入。', cover: copy },
+  { id: 9, title: '“海上工厂”荣获国际工业设计金奖。', date: '2023-08-21', excerpt: '以人因与可靠性为核心的系统化设计获认可。', cover: ex },
+  { id: 10, title: '海外市场首单落地，三文鱼产品登陆中东。', date: '2023-09-06', excerpt: '供应链布局走向全球化。', cover: copy },
+  { id: 11, title: '智能巡检无人机入列，海上运维效率提升40%。', date: '2023-09-28', excerpt: '自动航线、边缘识别、异常预警一体化。', cover: ex }
+])
 
-onMounted(async () => {
-  // 在本文件内直接模拟接口返回（异步）
-  const ex = new URL('../assets/images/ex.png', import.meta.url).href
-  const copyImg = new URL('../assets/images/copy.png', import.meta.url).href
-  await new Promise(r => setTimeout(r, 400))
-  allNews.value = [
-    { id: 1, title: '苏海1号LNG首航成功，开启中国深远海三文鱼养殖新纪元。', date: '2023-05-15', excerpt: '全球首座船载鱼类育苗工厂“苏海1号”顺利完成首航，标志着我国深远海三文鱼规模化养殖迈向里程碑。', cover: ex, type: '企业新闻' },
-    { id: 2, title: '连深海洋与中科院联合研发三文鱼病害快速检测技术。', date: '2023-04-28', excerpt: '产学研协同创新，助力水产健康养殖。', cover: copyImg, type: '企业新闻' },
-    { id: 3, title: '连深海洋与多家知名企业达成战略合作，共建三文鱼全产业链。', date: '2023-05-15', excerpt: '强强联合，推动产业高质量发展。', cover: copyImg, type: '企业新闻' },
-    { id: 11, title: '工信部发布深远海养殖装备指导意见，行业迎政策利好。', date: '2023-04-28', excerpt: '规范与创新并重，推动行业升级。', cover: ex, type: '行业动态' },
-    { id: 12, title: '国际三文鱼价格回升，带动养殖端积极性。', date: '2023-05-15', excerpt: '需求恢复，供给收紧，价格中枢上移。', cover: copyImg, type: '行业动态' },
-    { id: 13, title: '海水循环水养殖技术迭代，节能降耗成趋势。', date: '2023-05-15', excerpt: '新材料与智能控制系统加速应用。', cover: copyImg, type: '行业动态' }
-  ]
-  loading.value = false
-})
+const industryNews = ref([
+  { id: 101, title: '工信部发布深远海养殖装备指导意见，行业迎政策利好。', date: '2023-04-28', excerpt: '规范与创新并重，推动行业升级。', cover: ex },
+  { id: 102, title: '国际三文鱼价格回升，带动养殖端积极性。', date: '2023-05-15', excerpt: '需求恢复，供给收紧，价格中枢上移。', cover: copy },
+  { id: 103, title: '海水循环水养殖技术迭代，节能降耗成趋势。', date: '2023-05-20', excerpt: '新材料与智能控制系统加速应用。', cover: copy },
+  { id: 104, title: '北大西洋渔业组织发布可持续捕捞新标准。', date: '2023-06-01', excerpt: '生态红线与产能控制并举。', cover: ex },
+  { id: 105, title: '全球水产饲料原料结构调整，替代蛋白占比提升。', date: '2023-06-15', excerpt: '微藻蛋白与昆虫蛋白进入规模化应用阶段。', cover: copy },
+  { id: 106, title: '港口冷链运力恢复，跨境物流时效持续改善。', date: '2023-06-27', excerpt: '运价回落，仓配一体化程度提升。', cover: ex },
+  { id: 107, title: '海洋牧场碳汇核算方法学讨论稿发布。', date: '2023-07-04', excerpt: '产业链迎来“蓝碳”增量空间。', cover: copy },
+  { id: 108, title: '智慧渔业大会聚焦数字孪生与边缘智能。', date: '2023-07-19', excerpt: '从监测走向决策的系统创新。', cover: ex },
+  { id: 109, title: '主要产区高温天气来袭，养殖防暑降温成为重点。', date: '2023-08-02', excerpt: '精准曝气与溶氧监测设备需求上升。', cover: copy },
+  { id: 110, title: 'ESG评价体系纳入更多海洋生态指标。', date: '2023-08-18', excerpt: '绿色治理成为行业共识。', cover: ex },
+  { id: 111, title: '欧洲市场对ASC认证水产品需求持续增长。', date: '2023-09-09', excerpt: '可追溯与合规成为竞争壁垒。', cover: copy }
+])
 
-const groupByType = computed(() => ({
-  企业新闻: allNews.value.filter(n => n.type === '企业新闻'),
-  行业动态: allNews.value.filter(n => n.type === '行业动态')
-}))
+// 独立数组后不再需要计算分组
 
 const open = (id) => router.push({ name: 'news-detail', params: { id } })
+
+function chunk(list, size) {
+  const chunks = []
+  for (let i = 0; i < list.length; i += size) chunks.push(list.slice(i, i + size))
+  return chunks
+}
 </script>
 
 <template>
@@ -47,54 +63,75 @@ const open = (id) => router.push({ name: 'news-detail', params: { id } })
         <div class="title-underline"></div>
       </div>
 
-      <div v-if="!loading" class="news-section">
+      <div class="news-section">
         <h2 class="sec-title">企业新闻</h2>
         <div class="sec-body">
-          <div class="feature" v-if="groupByType.企业新闻.length">
-            <img class="feature-img" :src="groupByType.企业新闻[0].cover" alt="" />
+          <div class="feature" v-if="enterpriseNews.length">
+            <img class="feature-img" :src="enterpriseNews[0].cover" alt="" />
             <div class="feature-meta">
-              <div class="date">{{ groupByType.企业新闻[0].date }}</div>
-              <h3 class="feature-title" @click="open(groupByType.企业新闻[0].id)">{{ groupByType.企业新闻[0].title }}</h3>
-              <p class="feature-excerpt">{{ groupByType.企业新闻[0].excerpt }}</p>
-              <button class="more" @click="open(groupByType.企业新闻[0].id)">阅读全文</button>
+              <div class="date">{{ enterpriseNews[0].date }}</div>
+              <h3 class="feature-title" @click="open(enterpriseNews[0].id)">{{ enterpriseNews[0].title }}</h3>
+              <p class="feature-excerpt">{{ enterpriseNews[0].excerpt }}</p>
+              <button class="more" @click="open(enterpriseNews[0].id)">阅读全文</button>
             </div>
           </div>
-          <ul class="side-list">
-            <li v-for="(n, idx) in groupByType.企业新闻.slice(1, 6)" :key="n.id" @click="open(n.id)">
-              <div class="item-date">{{ n.date }}</div>
-              <div class="item-title">{{ n.title }}</div>
-            </li>
-          </ul>
-        </div>
-        <div class="dots">
-          <span v-for="i in 5" :key="'c-'+i" :class="{ dot:true, active: i===1 }"></span>
+          <Swiper
+            :modules="[Pagination, Autoplay]"
+            :pagination="{ clickable: true }"
+            :loop="true"
+            :autoplay="{ delay: 3000, disableOnInteraction: false }"
+            :slides-per-view="1"
+            :auto-height="false"
+            :observer="true"
+            :observe-parents="true"
+            :space-between="8"
+          >
+            <SwiperSlide v-for="(page, pIdx) in chunk(enterpriseNews.slice(1), 5)" :key="'ce-'+pIdx">
+              <ul class="side-list">
+                <li v-for="n in page" :key="n.id" @click="open(n.id)">
+                  <div class="item-date">{{ n.date }}</div>
+                  <div class="item-title">{{ n.title }}</div>
+                </li>
+              </ul>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
 
-      <div v-if="!loading" class="news-section">
+      <div class="news-section">
         <h2 class="sec-title">行业动态</h2>
         <div class="sec-body">
-          <div class="feature" v-if="groupByType.行业动态.length">
-            <img class="feature-img" :src="groupByType.行业动态[0].cover" alt="" />
+          <div class="feature" v-if="industryNews.length">
+            <img class="feature-img" :src="industryNews[0].cover" alt="" />
             <div class="feature-meta">
-              <div class="date">{{ groupByType.行业动态[0].date }}</div>
-              <h3 class="feature-title" @click="open(groupByType.行业动态[0].id)">{{ groupByType.行业动态[0].title }}</h3>
-              <p class="feature-excerpt">{{ groupByType.行业动态[0].excerpt }}</p>
-              <button class="more" @click="open(groupByType.行业动态[0].id)">阅读全文</button>
+              <div class="date">{{ industryNews[0].date }}</div>
+              <h3 class="feature-title" @click="open(industryNews[0].id)">{{ industryNews[0].title }}</h3>
+              <p class="feature-excerpt">{{ industryNews[0].excerpt }}</p>
+              <button class="more" @click="open(industryNews[0].id)">阅读全文</button>
             </div>
           </div>
-          <ul class="side-list">
-            <li v-for="(n, idx) in groupByType.行业动态.slice(1, 6)" :key="n.id" @click="open(n.id)">
-              <div class="item-date">{{ n.date }}</div>
-              <div class="item-title">{{ n.title }}</div>
-            </li>
-          </ul>
-        </div>
-        <div class="dots">
-          <span v-for="i in 5" :key="'i-'+i" :class="{ dot:true, active: i===1 }"></span>
+          <Swiper
+            :modules="[Pagination, Autoplay]"
+            :pagination="{ clickable: true }"
+            :loop="true"
+            :autoplay="{ delay: 3000, disableOnInteraction: false }"
+            :slides-per-view="1"
+            :auto-height="false"
+            :observer="true"
+            :observe-parents="true"
+            :space-between="8"
+          >
+            <SwiperSlide v-for="(page, pIdx) in chunk(industryNews.slice(1), 5)" :key="'ie-'+pIdx">
+              <ul class="side-list">
+                <li v-for="n in page" :key="n.id" @click="open(n.id)">
+                  <div class="item-date">{{ n.date }}</div>
+                  <div class="item-title">{{ n.title }}</div>
+                </li>
+              </ul>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
-      <div v-if="loading" class="loading">加载中...</div>
     </div>
   </section>
 </template>
@@ -128,7 +165,7 @@ const open = (id) => router.push({ name: 'news-detail', params: { id } })
 .news-section { padding: 16px 0 32px; }
 .sec-title { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
 
-.sec-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; border-top: 2px dotted #adadad; padding-top: 14px; }
+.sec-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; border-top: 2px dotted #adadad; padding-top: 14px; position: relative; padding-bottom: 28px; }
 .feature { display: grid; grid-template-columns: 1fr; padding-bottom: 12px; }
 .feature-img { width: 100%; display: block; border-radius: 4px; }
 .feature-meta { padding-top: 10px; }
@@ -142,7 +179,13 @@ const open = (id) => router.push({ name: 'news-detail', params: { id } })
 .side-list li { padding: 12px 0; border-bottom: 1.5px dashed #adadad; cursor: pointer; }
 .item-date { color: #8a8a8a; font-size: 12px; margin-bottom: 6px; }
 .item-title { font-size: 14px; line-height: 1.5; }
+.item-title { display:-webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-clamp: 2; }
 .side-list li:hover .item-title { color: #1677ff; }
+
+.news-section .swiper { width: 100%; height: auto; position: relative; padding-bottom: 20px; }
+.news-section .swiper-pagination { position: absolute; right: 0; bottom: 0; display: flex; justify-content: flex-end; gap: 8px; width: 100%; }
+.news-section .swiper-pagination-bullet { width: 6px; height: 6px; background: #ddd; opacity: 1; }
+.news-section .swiper-pagination-bullet-active { background: #f0a020; }
 
 .dots { display: flex; gap: 8px; align-items: center; justify-content: flex-end; margin-top: 14px; }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd; display: inline-block; }
@@ -150,6 +193,15 @@ const open = (id) => router.push({ name: 'news-detail', params: { id } })
 
 @media (max-width: 900px) {
   .sec-body { grid-template-columns: 1fr; }
+  .sec-body .swiper {
+    height: 440px; /* 适配每页5条，标题两行时更合适 */
+  }
+}
+@media (min-width: 1025px) {
+  /* 固定右侧轮播高度，避免分页位置跟随内容波动 */
+  .sec-body .swiper {
+    height: 420px; /* 适配每页5条，标题两行时更合适 */
+  }
 }
 </style>
 
