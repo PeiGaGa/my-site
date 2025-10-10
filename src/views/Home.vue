@@ -16,10 +16,14 @@
       </SwiperSlide>
     </Swiper>
     <div class="hero-controls">
-      <span class="hero-prev" role="button" aria-label="上一张" @click="goPrev">《</span>
+      <span class="hero-prev" role="button" aria-label="上一张" @click="goPrev">
+        <img class="hero-icon" :src="prevImg" alt="上一张" />
+      </span>
       <div class="hero-right">
         <span class="hero-counter">{{ currentPadded }}/{{ totalPadded }}</span>
-        <span class="hero-next" role="button" aria-label="下一张" @click="goNext">》</span>
+        <span class="hero-next" role="button" aria-label="下一张" @click="goNext">
+          <img class="hero-icon" :src="nextImg" alt="下一张" />
+        </span>
       </div>
     </div>
     <div class="hero-mask"></div>
@@ -79,6 +83,8 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import ex from '@/assets/images/ex.png'
 import copy from '@/assets/images/copy.png'
+import nextImg from '@/assets/images/next.png'
+import prevImg from '@/assets/images/prev.png'
 import { computed, ref } from 'vue'
 
 const slides = [
@@ -129,8 +135,10 @@ function goPrev() {
 .hero-controls { position:absolute; left:0; right:0; bottom: 1rem; display:flex; align-items:center; justify-content: space-between; padding: 0 1rem; z-index: 2; padding: 0 2.5rem;}
 .hero-right { display:flex; align-items:center; gap: 0.5rem; }
 .hero-counter { color:#fff; font-weight:600; letter-spacing:0.05em; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
-.hero-next, .hero-prev { border:0; background: transparent; color:#fff; padding: 0; border-radius: 0; cursor: pointer; font-size: 1.25rem; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.hero-next, .hero-prev { border:0; background: transparent; color:#fff; padding: 0; border-radius: 0; cursor: pointer; font-size: 1.25rem; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.35); display:inline-flex; align-items:center; justify-content:center; width:1.25rem; height:1.25rem; }
 .hero-next:hover, .hero-prev:hover { opacity: 0.85; }
+.hero-counter { display:inline-flex; align-items:center; height:1.25rem; line-height:1; }
+.hero-icon { width: 1.25rem; height: 1.25rem; display:block; }
 
 @media (min-width: 768px) {
   .hero-title { font-size: 5rem; } /* 80px */
