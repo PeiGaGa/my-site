@@ -294,8 +294,11 @@ const slides = ref([
       <div class="map">
         <img :src="ex" alt="全球营销网络示意" />
       </div>
-      <div class="sub-caption">加工与冷链物流体系</div>
-      <p class="note">以加工提效、冷链保鲜为核心，构建覆盖国内外的加工与冷链网络，提升产品交付效率与品质稳定性。</p>
+      <div class="map-content">
+        <div class="sub-caption">加工与冷链储运体系</div>
+        <div class="sub-caption-underline"></div>
+        <p class="note">以部分自建、部分会作的形式,形成覆盖全国各销售区域的加工与储运体系,建设产品全链条可监测体系,测测系统清節可查,确保产品质量与安全。</p>
+      </div>
     </div>
   </section>
 </template>
@@ -482,7 +485,11 @@ const slides = ref([
 /* 营销布局 */
 .marketing { margin-top:120px; }
 .map img { width:100%; height:auto; display:block; border-radius:2px; }
-.sub-caption { color:#6b7785; font-size:18px; margin:12px 0 6px; font-weight: 600;}
+.map { height:860px; overflow:hidden; }
+.map img { width:100%; height:100%; object-fit:cover; }
+.map-content { margin-left:60px; margin-top:40px; }
+.sub-caption { font-size:18px; margin:12px 0 6px; font-weight: 600;}
+.sub-caption-underline { width:40px; height:3px; background:#f5a34b; margin:6px 0 12px; }
 .note { margin:0; color:#4a5568; line-height:1.8; }
 
 @media (min-width: 768px) {
