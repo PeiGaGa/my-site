@@ -1,6 +1,168 @@
 <script setup>
+import { ref } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Navigation } from 'swiper/modules'
 import ex from '@/assets/images/ex.png'
 import copy from '@/assets/images/copy.png'
+
+// 导入Swiper样式
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+const swiperModules = [Pagination, Navigation]
+
+// Swiper实例引用
+const imageSwiperRef = ref(null)
+const contentSwiperRef = ref(null)
+const currentSlide = ref(0)
+const isSyncing = ref(false)
+
+// 处理图片轮播初始化
+const onImageSwiperInit = (swiper) => {
+  imageSwiperRef.value = swiper
+}
+
+// 处理内容轮播初始化
+const onContentSwiperInit = (swiper) => {
+  contentSwiperRef.value = swiper
+}
+
+// 处理分页器点击
+const handlePaginationClick = (index) => {
+  if (imageSwiperRef.value) {
+    imageSwiperRef.value.slideTo(index)
+  }
+  if (contentSwiperRef.value) {
+    contentSwiperRef.value.slideTo(index)
+  }
+  currentSlide.value = index
+}
+
+// 处理图片轮播切换
+const onImageSlideChange = (swiper) => {
+  if (isSyncing.value) return
+  currentSlide.value = swiper.activeIndex
+  if (contentSwiperRef.value) {
+    isSyncing.value = true
+    contentSwiperRef.value.slideTo(swiper.activeIndex)
+    setTimeout(() => {
+      isSyncing.value = false
+    }, 100)
+  }
+}
+
+// 处理内容轮播切换
+const onContentSlideChange = (swiper) => {
+  if (isSyncing.value) return
+  currentSlide.value = swiper.activeIndex
+  if (imageSwiperRef.value) {
+    isSyncing.value = true
+    imageSwiperRef.value.slideTo(swiper.activeIndex)
+    setTimeout(() => {
+      isSyncing.value = false
+    }, 100)
+  }
+}
+
+// 轮播数据
+const slides = ref([
+  {
+    id: 1,
+    image: ex,
+    title: '整条鱼（带头去脏）',
+    specs: [
+      { label: '保质期：', value: '冰鲜产品15天 / 冷冻产品24个月' },
+      { label: '三文鱼品种：', value: '大西洋海水紅' },
+      { label: '产品形态：', value: '鲜品 / 冻品' },
+      { label: '储存条件：', value: '冰鲜产品0-4℃冷保存 / 冷冻产品-1-25℃冷冻保存' },
+      { label: '产品规格：', value: '5kg+' }
+    ],
+    usage: {
+      title: '使用方法',
+      content: [
+        { label: '冰鲜产品：', value: '可根据产品应用需求、直接分割-分割满足生食加工条件' },
+        { label: '冷冻产品：', value: '0-4℃低温解冻,流水温水解冻' }
+      ]
+    }
+  },
+  {
+    id: 2,
+    image: ex,
+    title: '整条鱼（带头去脏）',
+    specs: [
+      { label: '保质期：', value: '冰鲜产品15天 / 冷冻产品24个月' },
+      { label: '三文鱼品种：', value: '大西洋海水紅' },
+      { label: '产品形态：', value: '鲜品 / 冻品' },
+      { label: '储存条件：', value: '冰鲜产品0-4℃冷保存 / 冷冻产品-1-25℃冷冻保存' },
+      { label: '产品规格：', value: '5kg+' }
+    ],
+    usage: {
+      title: '使用方法',
+      content: [
+        { label: '冰鲜产品：', value: '可根据产品应用需求、直接分割-分割满足生食加工条件' },
+        { label: '冷冻产品：', value: '0-4℃低温解冻,流水温水解冻' }
+      ]
+    }
+  },
+  {
+    id: 3,
+    image: ex,
+    title: '整条鱼（带头去脏）',
+    specs: [
+      { label: '保质期：', value: '冰鲜产品15天 / 冷冻产品24个月' },
+      { label: '三文鱼品种：', value: '大西洋海水紅' },
+      { label: '产品形态：', value: '鲜品 / 冻品' },
+      { label: '储存条件：', value: '冰鲜产品0-4℃冷保存 / 冷冻产品-1-25℃冷冻保存' },
+      { label: '产品规格：', value: '5kg+' }
+    ],
+    usage: {
+      title: '使用方法',
+      content: [
+        { label: '冰鲜产品：', value: '可根据产品应用需求、直接分割-分割满足生食加工条件' },
+        { label: '冷冻产品：', value: '0-4℃低温解冻,流水温水解冻' }
+      ]
+    }
+  },
+  {
+    id: 4,
+    image: ex,
+    title: '整条鱼（带头去脏）',
+    specs: [
+      { label: '保质期：', value: '冰鲜产品15天 / 冷冻产品24个月' },
+      { label: '三文鱼品种：', value: '大西洋海水紅' },
+      { label: '产品形态：', value: '鲜品 / 冻品' },
+      { label: '储存条件：', value: '冰鲜产品0-4℃冷保存 / 冷冻产品-1-25℃冷冻保存' },
+      { label: '产品规格：', value: '5kg+' }
+    ],
+    usage: {
+      title: '使用方法',
+      content: [
+        { label: '冰鲜产品：', value: '可根据产品应用需求、直接分割-分割满足生食加工条件' },
+        { label: '冷冻产品：', value: '0-4℃低温解冻,流水温水解冻' }
+      ]
+    }
+  },
+  {
+    id: 5,
+    image: ex,
+    title: '整条鱼（带头去脏）',
+    specs: [
+      { label: '保质期：', value: '冰鲜产品15天 / 冷冻产品24个月' },
+      { label: '三文鱼品种：', value: '大西洋海水紅' },
+      { label: '产品形态：', value: '鲜品 / 冻品' },
+      { label: '储存条件：', value: '冰鲜产品0-4℃冷保存 / 冷冻产品-1-25℃冷冻保存' },
+      { label: '产品规格：', value: '5kg+' }
+    ],
+    usage: {
+      title: '使用方法',
+      content: [
+        { label: '冰鲜产品：', value: '可根据产品应用需求、直接分割-分割满足生食加工条件' },
+        { label: '冷冻产品：', value: '0-4℃低温解冻,流水温水解冻' }
+      ]
+    }
+  }
+])
 </script>
 
 <template>
@@ -17,46 +179,94 @@ import copy from '@/assets/images/copy.png'
     </div>
     <div class="divider dashed"></div>
 
-    <!-- 顶部产品大图与轮播指示 -->
-    <div class="hero">
-      <img class="hero-img" :src="ex" alt="产品主图" />
-      <div class="hero-indicators">
-        <div class="dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <div class="numbers">
-          <span>01</span>
-          <span>02</span>
-          <span>03</span>
-          <span>04</span>
-          <span>05</span>
+    <!-- 产品轮播 -->
+    <div class="product-swiper-container">
+      <!-- 图片轮播区域 -->
+      <div class="image-swiper-container">
+        <Swiper
+          :modules="swiperModules"
+          :slides-per-view="1"
+          :space-between="0"
+          :pagination="false"
+          :navigation="false"
+          @swiper="onImageSwiperInit"
+          @slideChange="onImageSlideChange"
+          class="image-swiper"
+        >
+          <SwiperSlide v-for="slide in slides" :key="slide.id" class="swiper-slide-custom">
+            <div class="slide-image">
+              <img :src="slide.image" :alt="slide.title" />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+        
+        <!-- 分页器固定在图片下方 -->
+        <div class="swiper-pagination-custom">
+          <div class="dots">
+            <span 
+              v-for="(slide, index) in slides" 
+              :key="index"
+              class="dot"
+              :class="{ 'swiper-pagination-bullet-active-custom': index === currentSlide }"
+              @click="handlePaginationClick(index)"
+            ></span>
+          </div>
+          <div class="numbers">
+            <span 
+              v-for="(slide, index) in slides" 
+              :key="index"
+              @click="handlePaginationClick(index)"
+              :class="{ 'active': index === currentSlide }"
+            >{{ String(index + 1).padStart(2, '0') }}</span>
+          </div>
         </div>
       </div>
+      
+      <!-- 内容轮播区域 -->
+      <Swiper
+        :modules="swiperModules"
+        :slides-per-view="1"
+        :space-between="0"
+        :pagination="false"
+        :navigation="false"
+        @swiper="onContentSwiperInit"
+        @slideChange="onContentSlideChange"
+        class="content-swiper"
+      >
+        <SwiperSlide v-for="slide in slides" :key="slide.id" class="swiper-slide-custom">
+          <div class="slide-content">
+            <!-- 规格与使用方式 -->
+            <div class="slide-specs">
+              <!-- 产品标题 - 占满一行 -->
+              <div class="product-title">
+                {{ slide.title }}
+              </div>
+              
+              <div class="specs-content">
+                <div class="left">
+                  <ul class="kv">
+                    <li v-for="spec in slide.specs" :key="spec.label">
+                      <span>{{ spec.label }}</span><span>{{ spec.value }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="right">
+                  <div class="caption">{{ slide.usage.title }}</div>
+                  <div class="usage-list">
+                    <div v-for="(item, index) in slide.usage.content" :key="index" class="usage-item">
+                      <span class="usage-label">{{ item.label }}</span>
+                      <span class="usage-value">{{ item.value }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
 
-    <!-- 规格与使用方式 -->
-    <div class="specs">
-      <div class="left">
-        <div class="caption">整条鱼（带头去脏）</div>
-        <ul class="kv">
-          <li><b>原  产  地：</b><span>海洋养殖区</span></li>
-          <li><b>贮存条件：</b><span>冷藏保鲜</span></li>
-          <li><b>产品等级：</b><span>A级</span></li>
-          <li><b>规      格：</b><span>5kg+</span></li>
-        </ul>
-      </div>
-      <div class="right">
-        <div class="caption">使用方法</div>
-        <p>适用于蒸煮、清烤、刺身等多种烹饪方式；建议冷藏条件下加工食用。</p>
-        <p>保质期：0-4℃条件下建议48小时内食用完毕。</p>
-      </div>
-    </div>
-
-    <!-- 海上加工中心 -->
+    <!-- 海上加工中心 - 独立部分，不参与轮播 -->
     <div class="processing">
       <div class="section-caption">海上加工中心</div>
       <div class="processing-intro">
@@ -64,7 +274,7 @@ import copy from '@/assets/images/copy.png'
           <img :src="ex" alt="加工中心图片" />
         </div>
         <div class="right">
-          <h3 class="processing-title">全球首个三文鱼“海上加工中心”</h3>
+          <h3 class="processing-title">全球首个三文鱼"海上加工中心"</h3>
           <div class="processing-line"></div>
           <div class="metrics">
             <div class="metric"><b>双加工线</b><span>持续稳定</span></div>
@@ -116,27 +326,119 @@ import copy from '@/assets/images/copy.png'
 .divider { height: 0; border-top: 2px dashed #e5e6eb; margin: 12px 0 24px; }
 .section-caption { color:#6b7785; font-size:14px; margin-bottom:12px; }
 
-/* 顶部大图 */
-.hero { position: relative; }
-.hero-img { width:100%; height:auto; display:block; border-radius:2px; }
-.hero-indicators { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:8px; }
-.hero-indicators .dots { display:flex; gap:6px; }
-.dot { width:6px; height:6px; border-radius:50%; background:#cfd3dc; display:inline-block; }
-.dot.active { background:#f5a34b; }
-.hero-indicators .numbers { display:flex; gap:10px; color:#8a9099; font-size:12px; }
+/* 产品轮播 */
+.product-swiper-container { position: relative; margin-top: 16px; }
+.image-swiper-container { position: relative; }
+.image-swiper { width: 100%; }
+.content-swiper { width: 100%; }
+.swiper-slide-custom { height: auto; }
+.slide-content { display: flex; flex-direction: column; gap: 16px; }
+.slide-image { position: relative; }
+.slide-image img { width: 100%; height: auto; display: block; border-radius: 2px; }
 
-/* 规格与使用方式 */
-.specs { display:grid; grid-template-columns: 1fr; gap:24px; margin-top:16px; }
-.specs .left, .specs .right { border-top:2px dotted #dcdfe6; padding-top:14px; }
-.specs .caption { font-weight:600; margin-bottom:8px; }
-.kv { list-style:none; padding:0; margin:0; display:grid; gap:6px; color:#4a5568; }
-.kv b { margin-right:6px; color:#333; font-weight:600; }
-.specs .right p { margin:0 0 8px; line-height:1.8; color:#4a5568; }
+/* 产品标题 */
+.product-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+.product-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #f5a34b;
+}
+.slide-specs { display: flex; flex-direction: column; gap: 20px; }
+.specs-content { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.specs-content .left, .specs-content .right { padding-top: 14px; }
+.slide-specs .caption { 
+  font-weight: 600; 
+  margin-bottom: 12px; 
+  font-size: 16px;
+  color: #333;
+}
+.kv { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; color: #4a5568; }
+.kv li { display: flex; align-items: flex-start; }
+.kv b { 
+  margin-right: 8px; 
+  color: #333; 
+  font-weight: 600; 
+  min-width: 100px;
+  flex-shrink: 0;
+}
+.kv span { color: #4a5568; line-height: 1.6; }
+
+/* 使用方法样式 */
+.usage-list { display: flex; flex-direction: column; gap: 8px; }
+.usage-item { display: flex; align-items: flex-start; }
+.usage-label { 
+  color: #333; 
+  min-width: 100px;
+  flex-shrink: 0;
+}
+.usage-value { 
+  color: #4a5568; 
+  line-height: 1.6;
+}
+
+/* 自定义分页器 */
+.swiper-pagination-custom { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 16px; 
+  margin-top: 12px; 
+  padding: 8px 0;
+}
+.swiper-pagination-custom .dots { display: flex; gap: 8px; }
+.swiper-pagination-custom .dot { 
+  width: 8px; 
+  height: 8px; 
+  border-radius: 50%; 
+  background: #cfd3dc; 
+  display: inline-block; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.swiper-pagination-custom .dot:hover { 
+  background: #a0aec0; 
+  transform: scale(1.2);
+}
+.swiper-pagination-custom .dot.swiper-pagination-bullet-active-custom { 
+  background: #f5a34b; 
+  transform: scale(1.3);
+}
+.swiper-pagination-custom .numbers { 
+  display: flex; 
+  gap: 12px; 
+  color: #8a9099; 
+  font-size: 14px; 
+  font-weight: 500;
+}
+.swiper-pagination-custom .numbers span { 
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.swiper-pagination-custom .numbers span:hover { 
+  color: #4a5568; 
+  background: #f7f8fa;
+}
+.swiper-pagination-custom .numbers span.active { 
+  color: #f5a34b; 
+  background: #fef7ed;
+  font-weight: 600;
+}
 
 /* 海上加工中心 */
 .processing { margin-top:28px; position:relative; }
 .processing-intro { display:grid; grid-template-columns: 1fr; gap:24px; align-items:start; }
-.processing .left img { width:100%; height:auto; display:block; border-radius:2px; }
+.processing .left img { width:100%; height: 200px; display:block; border-radius:2px; width: 320px; }
 .processing .right { border-top:2px dotted #dcdfe6; padding-top:14px; }
 .processing-title { margin:0; font-size:16px; }
 .processing-line { height:3px; background:#f5a34b; width:40px; margin:10px 0 12px; }
@@ -154,8 +456,21 @@ import copy from '@/assets/images/copy.png'
 .note { margin:0; color:#4a5568; line-height:1.8; }
 
 @media (min-width: 768px) {
-  .specs { grid-template-columns: 1fr 1fr; gap:40px; }
-  .processing-intro { grid-template-columns: 320px 1fr; gap:40px; }
+  .product-title {
+    font-size: 18px;
+  }
+  .specs-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .processing-intro { grid-template-columns: 400px 1fr; gap:40px; }
+  .processing .left img { width:100%; height: 300px; display:block; border-radius:2px; max-width: none; width: 400px; }
+  
+  /* 桌面端优化规格信息布局 */
+  .kv { gap: 10px; }
+  .usage-list { gap: 10px; }
+}
+
+@media (min-width: 1024px) {
+  .processing-intro { grid-template-columns: 500px 1fr; gap:50px; }
+  .processing .left img { width:100%; height: 300px; display:block; border-radius:2px; max-width: none; width: 500px; }
 }
 </style>
 
