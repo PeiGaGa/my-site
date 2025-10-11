@@ -324,7 +324,28 @@ const slides = ref([
 .header-icon { width:24px; height:24px; object-fit:contain; opacity:.8; }
 
 .divider { height: 0; border-top: 2px dashed #e5e6eb; margin: 12px 0 24px; }
-.section-caption { color:#6b7785; font-size:14px; margin-bottom:12px; }
+.section-caption { 
+  font-size:14px; 
+  margin-bottom: 30px; 
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+}
+.section-caption::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    #dcdfe6 0,
+    #dcdfe6 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
 
 /* 产品轮播 */
 .product-swiper-container { position: relative; margin-top: 16px; }
@@ -438,8 +459,15 @@ const slides = ref([
 /* 海上加工中心 */
 .processing { margin-top:28px; position:relative; }
 .processing-intro { display:grid; grid-template-columns: 1fr; gap:24px; align-items:start; }
-.processing .left img { width:100%; height: 200px; display:block; border-radius:2px; width: 320px; }
-.processing .right { border-top:2px dotted #dcdfe6; padding-top:14px; }
+.processing .left img { 
+  width: 100%; 
+  max-width: 700px; 
+  height: auto; 
+  display: block; 
+  border-radius: 2px; 
+  aspect-ratio: 700/580;
+}
+.processing .right { padding-top:14px; }
 .processing-title { margin:0; font-size:16px; }
 .processing-line { height:3px; background:#f5a34b; width:40px; margin:10px 0 12px; }
 .metrics { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-bottom:8px; }
@@ -452,7 +480,7 @@ const slides = ref([
 /* 营销布局 */
 .marketing { margin-top:28px; }
 .map img { width:100%; height:auto; display:block; border-radius:2px; }
-.sub-caption { color:#6b7785; font-size:14px; margin:12px 0 6px; }
+.sub-caption { color:#6b7785; font-size:18px; margin:12px 0 6px; font-weight: 600;}
 .note { margin:0; color:#4a5568; line-height:1.8; }
 
 @media (min-width: 768px) {
@@ -460,8 +488,15 @@ const slides = ref([
     font-size: 18px;
   }
   .specs-content { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .processing-intro { grid-template-columns: 400px 1fr; gap:40px; }
-  .processing .left img { width:100%; height: 300px; display:block; border-radius:2px; max-width: none; width: 400px; }
+  .processing-intro { grid-template-columns: 700px 1fr; gap:40px; }
+  .processing .left img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    border-radius: 2px; 
+    max-width: 700px;
+    aspect-ratio: 700/580;
+  }
   
   /* 桌面端优化规格信息布局 */
   .kv { gap: 10px; }
@@ -469,8 +504,15 @@ const slides = ref([
 }
 
 @media (min-width: 1024px) {
-  .processing-intro { grid-template-columns: 500px 1fr; gap:50px; }
-  .processing .left img { width:100%; height: 300px; display:block; border-radius:2px; max-width: none; width: 500px; }
+  .processing-intro { grid-template-columns: 700px 1fr; gap:50px; }
+  .processing .left img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    border-radius: 2px; 
+    max-width: 700px;
+    aspect-ratio: 700/580;
+  }
 }
 </style>
 
