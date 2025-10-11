@@ -276,12 +276,13 @@ const slides = ref([
         <div class="right">
           <h3 class="processing-title">全球首个三文鱼"海上加工中心"</h3>
           <div class="processing-line"></div>
+          <p class="processing-intro-text">"苏海1号"配备全球首个三文鱼海上加工车间:</p>
           <div class="metrics">
-            <div class="metric"><b>双加工线</b><span>持续稳定</span></div>
-            <div class="metric"><b>100吨</b><span>单日最大产能</span></div>
-            <div class="metric"><b>5吨</b><span>冷链仓储能力</span></div>
+            <div class="metric"><b>双加工线</b><span>冰鲜和速冻</span></div>
+            <div class="metric"><b>100吨</b><span>24小时冰鲜加工产能</span></div>
+            <div class="metric"><b>5吨</b><span>24小时速冻加工产能</span></div>
           </div>
-          <p class="processing-text">加工流程贴近养殖海域减少运输损耗，确保每条鱼从养殖到成品更鲜更快。</p>
+          <p class="processing-text">加工鱼货通过辅助运输船和高效冷链物流,快速将极致新鲜的产品送达国内主要消费市场,从而在产品新鲜度和口感上相较进口冰鲜三文鱼形成显著优势。</p>
         </div>
       </div>
       <div class="corner-icon"><img class="header-icon" :src="copy" alt="copy" /></div>
@@ -458,7 +459,7 @@ const slides = ref([
 
 /* 海上加工中心 */
 .processing { margin-top:28px; position:relative; }
-.processing-intro { display:grid; grid-template-columns: 1fr; gap:24px; align-items:start; }
+.processing-intro { display:grid; grid-template-columns: 1fr; gap:24px; align-items:center; }
 .processing .left img { 
   width: 100%; 
   max-width: 700px; 
@@ -469,16 +470,17 @@ const slides = ref([
 }
 .processing .right { padding-top:14px; }
 .processing-title { margin:0; font-size:16px; }
-.processing-line { height:3px; background:#f5a34b; width:40px; margin:10px 0 12px; }
-.metrics { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-bottom:8px; }
-.metric { background:#f7f8fa; border:1px solid #eef0f4; border-radius:6px; padding:10px; text-align:center; }
+.processing-line { height:3px; background:#f5a34b; width:40px; margin:10px 0 66px; }
+.processing-intro-text { margin:0 0 66px 0; color:#4a5568; font-size:14px; line-height:1.6; }
+.metrics { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-bottom:80px; }
+.metric { border-radius:6px; padding:10px; text-align:center; }
 .metric b { display:block; color:#1f2937; }
 .metric span { color:#6b7280; font-size:12px; }
 .processing-text { margin:0; line-height:1.8; color:#4a5568; }
-.corner-icon { position:absolute; right:0; bottom:-12px; }
+.corner-icon { position:absolute; right:0; bottom:-100px; }
 
 /* 营销布局 */
-.marketing { margin-top:28px; }
+.marketing { margin-top:120px; }
 .map img { width:100%; height:auto; display:block; border-radius:2px; }
 .sub-caption { color:#6b7785; font-size:18px; margin:12px 0 6px; font-weight: 600;}
 .note { margin:0; color:#4a5568; line-height:1.8; }
@@ -488,7 +490,7 @@ const slides = ref([
     font-size: 18px;
   }
   .specs-content { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .processing-intro { grid-template-columns: 700px 1fr; gap:40px; }
+  .processing-intro { grid-template-columns: 700px 1fr; gap:40px; align-items:center; }
   .processing .left img { 
     width: 100%; 
     height: auto; 
@@ -504,7 +506,7 @@ const slides = ref([
 }
 
 @media (min-width: 1024px) {
-  .processing-intro { grid-template-columns: 700px 1fr; gap:50px; }
+  .processing-intro { grid-template-columns: 700px 1fr; gap:50px; align-items:center; }
   .processing .left img { 
     width: 100%; 
     height: auto; 
