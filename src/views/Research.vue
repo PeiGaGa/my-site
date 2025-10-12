@@ -104,16 +104,59 @@ const projects = ref([
   border-radius:2px; 
 }
 
+/* 移动端media间距 */
+.content .media {
+  margin-bottom: 16px;
+}
+
 .content { padding-bottom:16px; border-bottom:1px dashed #dadada; }
 .list li:last-child .content { border-bottom: none; }
-.content .desc { color:#4a5568; line-height:1.9; margin:8px 0 0; }
+.content .desc { color:#4a5568; line-height:1.9; margin:8px 0 0; font-size:18px;}
 .title-row { display:grid; grid-template-columns:auto 1fr; align-items:center; gap:12px; }
-.item-title { margin:0; font-size:16px; color:#333; font-weight:600; }
-.item-underline { display:block; width:44px; height:3px; background:#f5a34b; margin:6px 0 6px; }
+.item-title { margin:0; font-size:20px; color:#333; font-weight:600; }
+.item-underline { display:block; width:44px; height:3px; background:#f5a34b; margin:16px 0 50px; }
 
 @media (min-width: 768px) {
   .item { grid-template-columns: 360px 1fr; gap:24px; }
   .media img { height:240px; }
+  .content .media {
+    margin-bottom: 20px;
+  }
+  .item-underline {
+    margin: 20px 0 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content .media img {
+    width: 100%;
+    max-width: 1170px;
+    height: 360px;
+  }
+  .content .media {
+    margin-bottom: 32px;
+  }
+  .item-underline {
+    margin: 24px 0 50px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .content .media {
+    margin-bottom: 38px;
+  }
+  .item-underline {
+    margin: 26px 0 50px;
+  }
+}
+
+@media (min-width: 2200px) {
+  .content .media {
+    margin-bottom: 44px;
+  }
+  .item-underline {
+    margin: 30px 0 50px;
+  }
 }
 </style>
 
