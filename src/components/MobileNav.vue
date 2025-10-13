@@ -121,8 +121,8 @@ export default {
   padding: 0 1rem; /* 16px */ 
   height: var(--m-header-height); 
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  /* background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px); */
   box-sizing: border-box;
   position: relative;
   z-index: 20;

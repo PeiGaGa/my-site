@@ -71,8 +71,8 @@ export default {
   width: 100%; 
   padding: 0 2rem; /* 32px */ 
   height: var(--pc-header-height); 
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  /* background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px); */
 }
 
 .pc-nav__left { 

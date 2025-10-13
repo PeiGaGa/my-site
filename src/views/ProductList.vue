@@ -166,7 +166,7 @@ const slides = ref([
 </script>
 
 <template>
-  <section class="page-hero" role="img" aria-label="product hero">
+  <section class="page-hero" role="img" aria-label="product hero" data-hero>
     <img class="page-hero-img" :src="ex" alt="产品中心" />
     <div class="page-hero-mask"></div>
     <h1 class="page-hero-title">产品中心</h1>
