@@ -3,7 +3,7 @@
     <header class="m-header" :class="{ 'is-hidden': isHeaderHidden, 'is-transparent': isTransparent }">
       <MobileNav />
     </header>
-    <main class="m-main" :class="{ compact: isHeaderHidden, 'with-offset': !isTransparent }">
+    <main class="m-main" :class="{ compact: isHeaderHidden }">
       <router-view />
     </main>
     <SiteFooter />
@@ -74,10 +74,13 @@ function setupHeroObserver() {
     isTransparent.value = false;
     return;
   }
+  // Align behavior with PC: account for header height to avoid jitter
+  const header = document.querySelector('.m-header');
+  const topOffset = header ? header.offsetHeight : 0;
   heroObserver = new IntersectionObserver((entries) => {
     const entry = entries[0];
-    isTransparent.value = entry.isIntersecting && (window.scrollY || 0) < 40;
-  }, { root: null, threshold: 0.01 });
+    isTransparent.value = !!entry.isIntersecting;
+  }, { root: null, threshold: 0, rootMargin: `-${topOffset}px 0px 0px 0px` });
   heroObserver.observe(hero);
 }
 </script>
@@ -114,13 +117,12 @@ function setupHeroObserver() {
 .m-main { 
   min-height: calc(100vh - 6rem); /* 96px */ 
   padding: 0 1rem; /* 16px */ 
-  padding-top: 0; 
+  padding-top: var(--m-header-height);
   transition: padding-top 200ms ease;
   width: 100%;
   box-sizing: border-box;
 }
 
-.m-main.with-offset { padding-top: var(--m-header-height); }
 .m-main.compact { 
   padding-top: 0; 
 }
