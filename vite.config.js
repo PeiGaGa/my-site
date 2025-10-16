@@ -8,6 +8,8 @@ const SUPPORTED_LANGUAGES = ['zh-cn', 'en']
 
 // https://vite.dev/config/
 export default defineConfig({
+  // 让构建后的资源路径使用相对路径，确保直接用 file:// 打开 dist/index.html 可用
+  base: './',
   plugins: [
     vue(),
     Pages({

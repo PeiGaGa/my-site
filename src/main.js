@@ -9,6 +9,11 @@ import App from './App.vue'
 export const createApp = ViteSSG(
   App,
   {
+    // 使用 hash 路由，避免在 file:// 环境下对服务端路径的依赖
+    base: './',
+    routerOptions: {
+      history: 'hash',
+    },
     routes: [
       // 根路径重定向到默认语言
       {
